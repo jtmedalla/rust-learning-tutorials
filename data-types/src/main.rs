@@ -71,4 +71,40 @@ fn main() {
     let omega: char = 'o';
     let heart: char = '<';
     println!("{} {} {}", letter, omega, heart);
+
+    // tuples
+    let data: (u8, f32, bool) = (10, 3.5, false);
+    println!("data={:?}", data);
+
+    // accessing data in tuple
+    let (n, d, b) = data;
+    println!("{n}, {d}, {b}");
+
+    let first = data.0;
+    let second = data.1;
+    let last = data.2;
+    println!("The first element is {}", first);
+
+    let coordinates: (f32, f32) = (2.5, 1.5);
+    println!("The treasure is located here: {:?}", coordinates);
+
+    // unit (empty tuple)
+    // usually a return for expressions that don't return any value
+    let empty: () = ();
+
+    /* arrays - must contain the same data type
+        typing "[data_type; number_of_elements"*/
+    let numbers: [u8; 3] = [1, 2, 3];
+    println!("numbers = {:?}", numbers);
+
+    // repeaating number of items
+    let repeat = ["Bob"; 5];
+    println!("repeat={:?}", repeat);
+    
+    // accessing arrays
+    let days = ["Mon", "Tue", "Weds", "Thurs", "Fri", "Sat", "Sun"];
+    let first = days[0];
+    let last = days[6];
+
+    println!("First and last days are: {first}, {last}.");
 }
