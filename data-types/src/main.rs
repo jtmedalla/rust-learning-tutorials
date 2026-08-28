@@ -51,5 +51,24 @@ fn main() {
     println!("sum={sum}");
     println!("sum={}", sum == 0.3);
 
+    // booleans
+    let connected_to_internet: bool = false;
+    let has_cat: bool = true;
+    println!("connected_to_internet={}", connected_to_internet);
+    println!("has_cat={}", has_cat);
     
+    // in line boolean
+    let money: i32 = 5_000;
+    println!("money={money}");
+    println!("money > 0 = {}", money > 0);
+
+    if money > 0 {
+        println!("You are not broke!");
+    }
+
+    // character
+    let letter: char = 'z';
+    let omega: char = 'o';
+    let heart: char = '<';
+    println!("{} {} {}", letter, omega, heart);
 }
