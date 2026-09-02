@@ -50,6 +50,19 @@ fn main() {
 
     dbg!(name);
 
+    // making a copy (use .clone())
+    let name = String::from("Bob");
+    let name_copy = name.clone();
+
+    dbg!(name);
+    dbg!(name_copy);
+
+    // types with known size (i.e. integers) are stored in stack
+    let n1 = 100;
+    let n2 = n1;
+
+    dbg!(n1, n2);
+
     
 }
 
