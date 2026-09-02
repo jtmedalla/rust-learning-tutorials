@@ -54,4 +54,29 @@ fn main() {
         dbg!(names[index]);
         index += 1;
     }
+
+    // loop labels
+    let mut main_count = 0;
+
+    'main: loop {
+        println!("Outer: {main_count}");
+        let mut inner_count = 0;
+
+        loop {
+            println!("Inner: {inner_count}");
+            inner_count += 1;
+
+            if inner_count == 3 {
+                println!("---");
+                break;
+            }
+
+            if main_count == 3 {
+                println!("Exiting out of all loops");
+                break 'main;
+            }
+        }
+
+        main_count += 1;
+    }
 }
