@@ -63,6 +63,83 @@ fn main() {
 
     dbg!(n1, n2);
 
-    
+    // strings are transfered ownership when used as function parameters
+    let text = String::from("Bob");
+    greet(text);
+
+    // types with known size are copied when used in functions
+    let n = 200;
+    display_number(n);
+    println!("Second attempt at using n : {n}");
+
+    let s1 = create_string();
+    let s2 = create_string();
+    let s3 = process_text(s1);
+    dbg!(s3);
+
+
+    // transfering ownership via tuple
+    let text = String::from("Bob");
+    let (text, length) = total_characters(text);
+
+    println!("{text} has a total length of {length}");
+
+    /*
+        use the '&' to use the variable's refrence instead.
+        values are not moved in memory
+        variable can be used for later
+    */
+    let mut name = String::from("Bob");
+    let len = get_length(&name);
+    println!("The length of '{name}' is {len}");
+
+    dbg!(&name, &len);
+
+    modify(&mut name);
+    println!("Text is {name}");
+
+    let mut text = String::from("Bob");
+    /*
+        not allowed. can cause data races (race conditions but for data)
+        mutable references can be used in different scopes
+        let r1 = &mut text;
+        let r2 = &mut text;
+
+        also not allowed immutable and mutable reference cannot coexist
+        let r1 = &text;
+        let r2 = &text;
+        let r3 = &mut text;
+
+        you cannot modify the original when there is an active mutable refrence
+    */
 }
 
+fn greet(name: String) {
+    println!("Hello, {name}");
+}
+
+fn display_number(n: i32) {
+    println!("The number is : {n}");
+}
+
+fn create_string() -> String {
+    return String::from("Bob");
+}
+
+fn process_text(text: String) -> String {
+    return text.to_uppercase();
+}
+
+fn total_characters(text: String) -> (String, usize) {
+    let length = text.chars().count();
+    return (text, length);
+}
+
+fn get_length(text: &String) -> usize {
+    return text.chars().count();
+}
+
+// references are immutable by default. add mut keyword
+fn modify(text: &mut String) {
+    text.push_str("!");
+}
