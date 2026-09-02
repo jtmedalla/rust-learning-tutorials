@@ -12,4 +12,46 @@ fn main() {
         }
     };
     dbg!(result);
+
+    // while loops
+    let mut n = 10;
+    while n > 0 {
+        n -= 1;
+
+        if n == 5 {
+            println!("Skipping 5!");
+            // skips an iteration of the loop
+            continue;
+        }
+
+        // not executed when continue is encountered
+        println!("n = {:?}", n);
+    }
+
+    // for loops: allow for iteration in iterables easily
+    let names = ["Bob", "Ben", "Betty"];
+
+    for name in names {
+        println!("{name} says: hi!");
+    }
+
+    let numbers: [i32; 5] = [1, 2, 3, 4, 5];
+    let mut power_total = 0;
+
+    for number in numbers {
+        let squared = number.pow(2);
+        println!("{number}: {:?}", squared);
+        power_total += squared;
+    }
+
+    dbg!(power_total);
+
+    // better to use for loop here vs while
+    let names = ["Bob", "Ben", "Betty"];
+    let mut index = 0;
+
+    while index < names.len() {
+        dbg!(names[index]);
+        index += 1;
+    }
 }
